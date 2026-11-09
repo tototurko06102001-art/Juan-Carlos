@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StudyBuddy</title>
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f0f4ff;
+        }
+
+        header {
+            background: #1769e0;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 0 0 25px 25px;
+        }
+
+        header h1 {
+            margin: 5px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        input {
+            width: 90%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #123b75;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px 10px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 3px 8px #ddd;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            background: #dce9ff;
+        }
+
+        .card span {
+            font-size: 30px;
+        }
+
+        .notes {
+            background: white;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 12px;
+        }
+
+        button {
+            background: #1769e0;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #1769e0;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>📚 StudyBuddy</h1>
+    <p>Learn • Share • Grow</p>
+    <p>Welcome, Student!</p>
+</header>
+
+<div class="container">
+
+    <input type="text"
+    id="search"
+    placeholder="Search study materials..."
+    onkeyup="searchNotes()">
+
+    <h2>Explore StudyBuddy</h2>
+
+    <div class="menu">
+
+        <div class="card"
+        onclick="showMessage('Study Materials')">
+            <span>📖</span>
+            <h3>Study Materials</h3>
+        </div>
+
+        <div class="card"
+        onclick="showMessage('Study Groups')">
+            <span>👥</span>
+            <h3>Study Groups</h3>
+        </div>
+
+        <div class="card"
+        onclick="showMessage('Progress Tracking')">
+            <span>📊</span>
+            <h3>Track Progress</h3>
+        </div>
+
+        <div class="card"
+        onclick="showMessage('Student Profile')">
+            <span>👤</span>
+            <h3>My Profile</h3>
+        </div>
+
+    </div>
+
+    <h2>Available Study Notes</h2>
+
+    <div id="notes">
+
+        <div class="notes">
+            <h3>Computer Programming</h3>
+            <p>Learn the basics of programming.</p>
+            <button onclick="readNote('Computer Programming')">
+                View Notes
+            </button>
+        </div>
+
+        <div class="notes">
+            <h3>Database Management</h3>
+            <p>Learn about databases and SQL.</p>
+            <button onclick="readNote('Database Management')">
+                View Notes
+            </button>
+        </div>
+
+        <div class="notes">
+            <h3>Software Engineering</h3>
+            <p>Learn about software development.</p>
+            <button onclick="readNote('Software Engineering')">
+                View Notes
+            </button>
+        </div>
+
+    </div>
+
+    <h2>Motivation</h2>
+    <div class="notes">
+        💡 Keep studying! Small steps lead to big achievements.
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 StudyBuddy</p>
+    <p>Learn Together, Grow Together!</p>
+</footer>
+
+<script>
+
+    function showMessage(section) {
+        alert("Welcome to " + section + "!");
+    }
+
+    function readNote(subject) {
+        alert("You selected: " + subject);
+    }
+
+    function searchNotes() {
+
+        let input = document.getElementById("search")
+        .value.toLowerCase();
+
+        let notes = document.querySelectorAll(".notes");
+
+        notes.forEach(function(note) {
+
+            if (note.innerText.toLowerCase().includes(input)) {
+                note.style.display = "";
+            } else {
+                note.style.display = "none";
+            }
+
+        });
+    }
+
+</script>
+
+</body>
+</html>
